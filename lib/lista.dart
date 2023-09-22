@@ -17,7 +17,7 @@ class Lista extends StatelessWidget {
               titulo,
               style: const TextStyle(
                 fontSize: 15,
-                color: Color.fromARGB(130, 0, 0, 0),
+                color: Colors.white,
               ),
             ),
           ),

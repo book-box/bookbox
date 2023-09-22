@@ -22,6 +22,8 @@ flutter:
   - assets\images\Perfil.png
   - assets\images\1.jpg
   - assets\images\Plus.png
+  - assets\images\Logo.png
+  - assets\images\Head.png
   
 flutter_icons:
   image_path: "icon/icon.png" 

@@ -11,11 +11,8 @@ class Livro extends StatelessWidget {
       margin: const EdgeInsets.all(5),
       width: 61,
       height: 94,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(image),
-          fit: BoxFit.cover,
-        ),
+      decoration: const BoxDecoration(
+        color: Colors.white,
       ),
     );
   }

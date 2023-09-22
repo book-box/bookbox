@@ -5,36 +5,47 @@ class BotoesPerfil extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ElevatedButton(
-          onPressed: null,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.lightBlue,
-            shape: const StadiumBorder(),
-          ),
-          child: const Text('Estante'),
+    return Container(
+      margin: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 0, 0, 0),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          BotaoPerfil('GOSTEI', Color.fromARGB(255, 222, 188, 235)),
+          SizedBox(width: 30),
+          BotaoPerfil('ESTANTE', Color.fromARGB(255, 101, 208, 224)),
+          SizedBox(width: 30),
+          BotaoPerfil('LIDOS', Color.fromARGB(255, 180, 235, 61)),
+        ],
+      ),
+    );
+  }
+}
+
+class BotaoPerfil extends StatelessWidget {
+  const BotaoPerfil(this.text, this.color, {Key? key}) : super(key: key);
+  final String text;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: null,
+      style: ElevatedButton.styleFrom(
+        disabledBackgroundColor: color,
+        surfaceTintColor: color,
+        shape: const StadiumBorder(),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontSize: 15,
+          color: Colors.white,
         ),
-        const SizedBox(width: 30),
-        ElevatedButton(
-          onPressed: null,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.lightBlue,
-            shape: const StadiumBorder(),
-          ),
-          child: const Text('Lendo'),
-        ),
-        const SizedBox(width: 30),
-        ElevatedButton(
-          onPressed: null,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.lightBlue,
-            shape: const StadiumBorder(),
-          ),
-          child: const Text('Lidos'),
-        ),
-      ],
+      ),
     );
   }
 }

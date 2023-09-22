@@ -1,35 +1,30 @@
 import 'package:flutter/material.dart';
-import 'bottom_navigation_bar.dart';
 
-class Navbar extends BottomNavigationBarItem {
+class Navbar extends StatelessWidget {
+  const Navbar({super.key});
 
-  Navbar({Key? key}) : super(key: key);
-
-  final List<BottomNavigationBarItemInfo> bottomNavItems = [
-    BottomNavigationBarItemInfo(
-      icon: null,
-      iconPath: "images/search.png",
-      onPressed: () {
-        // Ação ao pressionar o ícone de pesquisa
-      },
-    ),
-    BottomNavigationBarItemInfo(
-      icon: null,
-      iconPath: "images/meio.png",
-      onPressed: () {
-        // Ação ao pressionar o segundo ícone
-      },
-    ),
-    BottomNavigationBarItemInfo(
-      icon: null,
-      iconPath: "images/head.png",
-      onPressed: () {
-        // Ação ao pressionar o ícone de configurações
-      },
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
-
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BottomNavigationBar Demo'),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.call),
+            label: 'Calls',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.camera),
+            label: 'Camera',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chats',
+          ),
+        ],
+      ),
+    );
   }
 }

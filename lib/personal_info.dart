@@ -19,6 +19,10 @@ class PersonalInfo extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: Text.rich(
             TextSpan(text: '“ E você, meu amigo '),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
           ),
         ),
       ],
