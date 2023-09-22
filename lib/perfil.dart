@@ -4,6 +4,7 @@ import 'package:bookbox/lista.dart';
 import 'package:bookbox/botoes_perfil.dart';
 import 'package:bookbox/personal_info.dart';
 import 'package:bookbox/navbar.dart';
+import 'package:bookbox/seguidores.dart';
 
 class Perfil extends StatelessWidget {
   const Perfil({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class Perfil extends StatelessWidget {
               ),
             ),
             PersonalInfo(),
-            SizedBox(height: 20),
+            Seguidores(),
             Lista('Favoritos'),
             BotoesPerfil(),
             Lista('Lista 1'),
