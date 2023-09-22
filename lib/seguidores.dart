@@ -8,7 +8,7 @@ class Seguidores extends StatelessWidget{
     return const Row(
       mainAxisAlignment: MainAxisAlignment.start,      
       children: [
-        SizedBox(width: 20),
+        SizedBox(width: 15),
         SeguiContainer('3', 'seguidores'),
         SeguiContainer('5', 'seguindo'),
       ],
@@ -26,11 +26,14 @@ class SeguiContainer extends StatelessWidget{
   Widget build(context){
     return Container(
       margin: const EdgeInsets.all(5),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2.5),
       decoration: BoxDecoration(
-        color:const Color.fromARGB(255, 34, 11, 11),
+        color:const Color.fromARGB(255, 56, 55, 55),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        
         children: [
           Text(
             num,
