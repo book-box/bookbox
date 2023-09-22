@@ -5,26 +5,33 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('BottomNavigationBar Demo'),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.call),
-            label: 'Calls',
+    return BottomNavigationBar(
+      backgroundColor: Colors.black,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.search,
+            color: Colors.white,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            label: 'Camera',
+          label: 'Search',
+        ),
+        BottomNavigationBarItem(
+          icon: ImageIcon(
+            AssetImage('assets/images/Logo.png'),
+            color: Colors.white,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chats',
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: ImageIcon(
+            AssetImage('assets/images/Head.png'),
+            color: Colors.white,
           ),
-        ],
-      ),
+          label: 'Head',
+        ),
+      ],
     );
   }
 }
