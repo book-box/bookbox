@@ -9,8 +9,8 @@ class Navbar extends StatelessWidget {
       backgroundColor: Colors.black,
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
+      items: <BottomNavigationBarItem>[
+        const BottomNavigationBarItem(
           icon: Icon(
             Icons.search,
             color: Colors.white,
@@ -18,13 +18,13 @@ class Navbar extends StatelessWidget {
           label: 'Search',
         ),
         BottomNavigationBarItem(
-          icon: ImageIcon(
-            AssetImage('assets/images/Logo.png'),
-            color: Colors.white,
+          icon: Image.asset(
+            'assets/images/Logo.png',
+            width: 30,
           ),
           label: 'Home',
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: ImageIcon(
             AssetImage('assets/images/Head.png'),
             color: Colors.white,
