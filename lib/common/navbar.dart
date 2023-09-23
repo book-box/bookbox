@@ -14,6 +14,7 @@ class Navbar extends StatelessWidget {
           icon: Icon(
             Icons.search,
             color: Colors.white,
+            size: 40,
           ),
           label: 'Search',
         ),
@@ -28,6 +29,7 @@ class Navbar extends StatelessWidget {
           icon: ImageIcon(
             AssetImage('assets/images/Head.png'),
             color: Colors.white,
+            size: 40,
           ),
           label: 'Head',
         ),

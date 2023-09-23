@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:bookbox/common/navbar.dart';
-import 'package:bookbox/pages/perfil_page.dart';
+import 'package:bookbox/pages/home_page.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Perfil',
-      home: PerfilPage(),
+      home: HomePage(),
     );
   }
 }
