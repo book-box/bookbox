@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bookbox/seguidores.dart';
 
 class PersonalInfo extends StatelessWidget {
   const PersonalInfo({Key? key}) : super(key: key);
@@ -7,21 +8,27 @@ class PersonalInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0.4),
-          child: CircleAvatar(
-            radius: 40,
-            backgroundColor: Colors.brown.shade800,
-            child: const Text('AH'),
-          ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0.4),
+              child: CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.brown.shade800,
+                child: const Text('HS'),
+              ),
+            ),
+            const Seguidores(),
+          ],
         ),
+        const SizedBox(width: 20),
         const Align(
           alignment: Alignment.topCenter,
           child: Text.rich(
-            TextSpan(text: '“ E você, meu amigo '),
+            TextSpan(text: 'lorem ipsum dolor sit amet'),
             style: TextStyle(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: 10,
             ),
           ),
         ),

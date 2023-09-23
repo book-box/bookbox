@@ -19,8 +19,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-  - assets\images\Perfil.png
   - assets\images\1.jpg
+  - assets\images\Perfil.png
   - assets\images\Plus.png
   - assets\images\Logo.png
   - assets\images\Head.png
