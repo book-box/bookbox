@@ -1,3 +1,5 @@
+import 'package:bookbox/pages/estante_page.dart';
+import 'package:bookbox/pages/perfil_page.dart';
 import 'package:flutter/material.dart';
 
 class BotoesPerfil extends StatelessWidget {
@@ -8,7 +10,7 @@ class BotoesPerfil extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 0, 0, 0),
+        color: const Color.fromARGB(255, 0, 0, 0),
         borderRadius: BorderRadius.circular(25),
       ),
       child: const Row(
@@ -33,10 +35,14 @@ class BotaoPerfil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: null,
+      onPressed: (){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const EstantePage()),
+        );
+      },
       style: ElevatedButton.styleFrom(
-        disabledBackgroundColor: color,
-        surfaceTintColor: color,
+        backgroundColor: color,
         shape: const StadiumBorder(),
       ),
       child: Text(

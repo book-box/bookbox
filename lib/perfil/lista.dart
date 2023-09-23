@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'livro.dart';
+import 'package:bookbox/perfil/livro.dart';
 
 class Lista extends StatelessWidget {
   const Lista(this.titulo, {Key? key}) : super(key: key);
@@ -23,6 +23,7 @@ class Lista extends StatelessWidget {
           ),
         ),
         const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Livro('assets/images/1.jpg'),
             Livro('assets/images/1.jpg'),

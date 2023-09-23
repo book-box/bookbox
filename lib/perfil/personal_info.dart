@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bookbox/seguidores.dart';
+import 'package:bookbox/perfil/seguidores.dart';
 
 class PersonalInfo extends StatelessWidget {
   const PersonalInfo({Key? key}) : super(key: key);

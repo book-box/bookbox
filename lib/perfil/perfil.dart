@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:bookbox/lista.dart';
-import 'package:bookbox/botoes_perfil.dart';
-import 'package:bookbox/personal_info.dart';
-import 'package:bookbox/navbar.dart';
+import 'package:bookbox/perfil/lista.dart';
+import 'package:bookbox/perfil/botoes_perfil.dart';
+import 'package:bookbox/perfil/personal_info.dart';
+
 
 
 class Perfil extends StatelessWidget {
@@ -11,12 +11,7 @@ class Perfil extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Perfil',
-      home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 20, 20, 20),
-        bottomNavigationBar: Navbar(),
-        body: SingleChildScrollView(
+    return const SingleChildScrollView(
           child: Column(
             children: [
               Align(
@@ -43,8 +38,6 @@ class Perfil extends StatelessWidget {
               Lista('Lista 1'),
               Lista('Lista 2'),
             ],
-          ),
-        ),
       ),
     );
   }
