@@ -1,5 +1,4 @@
 import 'package:bookbox/pages/estante_page.dart';
-import 'package:bookbox/pages/perfil_page.dart';
 import 'package:flutter/material.dart';
 
 class BotoesPerfil extends StatelessWidget {
