@@ -46,6 +46,7 @@ class _Navbar extends State<Navbar> {
 
   @override
   Widget build(context) => Scaffold(
+        backgroundColor: const Color.fromARGB(255, 15, 15, 15),
         body: Container(  
           decoration: const BoxDecoration(
 
