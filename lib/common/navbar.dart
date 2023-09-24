@@ -45,32 +45,22 @@ class _Navbar extends State<Navbar> {
   ];
 
   @override
-  Widget build(context) => Scaffold(
-        backgroundColor: const Color.fromARGB(255, 15, 15, 15),
-        body: Container(  
-          decoration: const BoxDecoration(
-
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 0, 0, 0),
-                Color.fromARGB(255, 33, 33, 33),
-                Color.fromARGB(255, 33, 33, 33),
-                Color.fromARGB(255, 33, 33, 33),
-                Color.fromARGB(255, 33, 33, 33),
-              ],
-            ),
-          ),
-          child: pages[index],
-        ),
-        appBar: topbar[index],
-        bottomNavigationBar: BottomNavigationBar(
+  Widget build(context) => BottomNavigationBar(
           backgroundColor: Colors.black,
           currentIndex: index,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          onTap: (index) => setState(() => this.index = index),
+          onTap: (index) {
+            if (index == 0) {
+              Navigator.pushNamed(context, '/pesquisa');
+            }
+            if (index == 1) {
+              Navigator.pushNamed(context, '/');
+            }
+            if (index == 2) {
+              Navigator.pushNamed(context, '/perfil');
+            }
+          },
           items: [
             const BottomNavigationBarItem(
               icon: Icon(
@@ -96,6 +86,5 @@ class _Navbar extends State<Navbar> {
               label: 'Head',
             ),
           ],
-        ),
       );
 }

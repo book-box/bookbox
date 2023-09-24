@@ -60,13 +60,18 @@ class SectionWithCards extends StatelessWidget {
               cardCount,
               (index) => Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  color: Colors.white,
-                  child: SizedBox(
-                    width: 100,
-                    height: 160,
-                    child: Center(
-                      child: Text('Card $index'),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, '/livro');
+                  },
+                  child: Card(
+                    color: Colors.white,
+                    child: SizedBox(
+                      width: 100,
+                      height: 160,
+                      child: Center(
+                        child: Text('Card $index'),
+                      ),
                     ),
                   ),
                 ),

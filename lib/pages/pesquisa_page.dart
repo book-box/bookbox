@@ -1,19 +1,19 @@
-import 'package:flutter/material.dart';
+import 'package:bookbox/pesquisa/pesquisa.dart';
 
-import 'package:bookbox/estante/estante.dart';
+import 'package:flutter/material.dart';
 
 import 'package:bookbox/common/navbar.dart';
 import 'package:bookbox/common/gradient.dart';
 
-class EstantePage extends StatelessWidget {
-  const EstantePage({super.key});
+class PesquisaPage extends StatelessWidget {
+  const PesquisaPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Color.fromARGB(255, 15, 15, 15),
       bottomNavigationBar: Navbar(),
-      body: GradientBook(Estante()),
+      body: GradientBook(Pesquisa()),
     );
   }
 }
