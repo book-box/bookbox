@@ -49,11 +49,14 @@ class _Navbar extends State<Navbar> {
         backgroundColor: Colors.black,
         body: pages[index],
         appBar: topbar[index],
-        bottomNavigationBar: NavigationBar(
+        bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,
-          selectedIndex: index,
-          destinations: [
-            const NavigationDestination(
+          currentIndex: index,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          onTap: (index) => setState(() => this.index = index),
+          items: [
+            const BottomNavigationBarItem(
               icon: Icon(
                 Icons.search,
                 color: Colors.white,
@@ -61,14 +64,14 @@ class _Navbar extends State<Navbar> {
               ),
               label: 'Search',
             ),
-            NavigationDestination(
+            BottomNavigationBarItem(
               icon: Image.asset(
                 'assets/images/Logo.png',
                 width: 30,
               ),
               label: 'Home',
             ),
-            const NavigationDestination(
+            const BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage('assets/images/Head.png'),
                 color: Colors.white,
@@ -77,7 +80,6 @@ class _Navbar extends State<Navbar> {
               label: 'Head',
             ),
           ],
-          onDestinationSelected: (index) => setState(() => this.index = index),
         ),
       );
 }
