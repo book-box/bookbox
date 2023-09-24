@@ -46,8 +46,23 @@ class _Navbar extends State<Navbar> {
 
   @override
   Widget build(context) => Scaffold(
-        backgroundColor: Colors.black,
-        body: pages[index],
+        body: Container(  
+          decoration: const BoxDecoration(
+
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromARGB(255, 0, 0, 0),
+                Color.fromARGB(255, 33, 33, 33),
+                Color.fromARGB(255, 33, 33, 33),
+                Color.fromARGB(255, 33, 33, 33),
+                Color.fromARGB(255, 33, 33, 33),
+              ],
+            ),
+          ),
+          child: pages[index],
+        ),
         appBar: topbar[index],
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.black,

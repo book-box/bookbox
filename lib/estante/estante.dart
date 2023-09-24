@@ -33,6 +33,12 @@ class Estante extends StatelessWidget {
             color: Colors.black,
             thickness: 15,
           ),
+          SizedBox(height: 20),
+          ListaEstante(Colors.orangeAccent),
+          Divider(
+            color: Colors.black,
+            thickness: 15,
+          ),
         ],
       ),
     );
