@@ -14,6 +14,12 @@ class GradientBook extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             Color.fromARGB(255, 0, 0, 0),
+            Color.fromARGB(255, 25, 25, 25),
+            Color.fromARGB(255, 33, 33, 33),
+            Color.fromARGB(255, 33, 33, 33),
+            Color.fromARGB(255, 33, 33, 33),
+            Color.fromARGB(255, 33, 33, 33),
+            Color.fromARGB(255, 33, 33, 33),
             Color.fromARGB(255, 33, 33, 33),
             Color.fromARGB(255, 33, 33, 33),
             Color.fromARGB(255, 33, 33, 33),

@@ -52,13 +52,13 @@ class _Navbar extends State<Navbar> {
           showUnselectedLabels: false,
           onTap: (index) {
             if (index == 0) {
-              Navigator.pushNamed(context, '/pesquisa');
+              Navigator.pushReplacementNamed(context, '/pesquisa');
             }
             if (index == 1) {
-              Navigator.pushNamed(context, '/');
+              Navigator.pushReplacementNamed(context, '/');
             }
             if (index == 2) {
-              Navigator.pushNamed(context, '/perfil');
+              Navigator.pushReplacementNamed(context, '/perfil');
             }
           },
           items: [

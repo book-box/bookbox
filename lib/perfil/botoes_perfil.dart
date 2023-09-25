@@ -15,11 +15,11 @@ class BotoesPerfil extends StatelessWidget {
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BotaoPerfil('GOSTEI', Color.fromARGB(255, 222, 188, 235)),
+          BotaoPerfil('GOSTEI', Color.fromARGB(255, 222, 188, 235), '/gostei'),
           SizedBox(width: 30),
-          BotaoPerfil('ESTANTE', Color.fromARGB(255, 101, 208, 224)),
+          BotaoPerfil('ESTANTE', Color.fromARGB(255, 101, 208, 224), '/estante'),
           SizedBox(width: 30),
-          BotaoPerfil('LIDOS', Color.fromARGB(255, 180, 235, 61)),
+          BotaoPerfil('LIDOS', Color.fromARGB(255, 180, 235, 61), '/lidos'),
         ],
       ),
     );
@@ -27,17 +27,18 @@ class BotoesPerfil extends StatelessWidget {
 }
 
 class BotaoPerfil extends StatelessWidget {
-  const BotaoPerfil(this.text, this.color, {Key? key}) : super(key: key);
+  const BotaoPerfil(this.text, this.color, this.path, {Key? key}) : super(key: key);
   final String text;
   final Color color;
+  final String path;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: (){
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(builder: (context) => const EstantePage()),
+          path,
         );
       },
       style: ElevatedButton.styleFrom(
