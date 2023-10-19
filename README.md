@@ -38,6 +38,8 @@ Contribuições são bem-vindas! Se você tiver alguma sugestão ou correção, 
 **Autor**
 
 Henrique Soares
+Luiza Loures
+Dalton Oliveira
 
 **Licença**
 
