@@ -20,7 +20,6 @@ class _FavoritosState extends State<Favoritos> {
   @override
   void initState() {
     super.initState();
-    //refresh();
   }
 
   @override
@@ -65,11 +64,11 @@ class _FavoritosState extends State<Favoritos> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            BookContainer(link: link[0]),
-            BookContainer(link: link[1]),
-            BookContainer(link: link[2]),
-            BookContainer(link: link[3]),
-            BookContainer(link: link[4]),
+            BookContainer(link: link[0], id: favoritosList[0]),
+            BookContainer(link: link[1], id: favoritosList[1]),
+            BookContainer(link: link[2], id: favoritosList[2]),
+            BookContainer(link: link[3], id: favoritosList[3]),
+            BookContainer(link: link[4], id: favoritosList[4]),
           ],
         ),
       ],
@@ -84,21 +83,38 @@ class _FavoritosState extends State<Favoritos> {
 
 class BookContainer extends StatelessWidget {
   final String? link;
+  final String? id;
 
-  const BookContainer({this.link, Key? key}) : super(key: key);
+  const BookContainer({this.link, this.id, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 61,
       height: 94,
-      child: link != null
-          ? Image.network(
-              link!,
-            )
-          : const Center(
-              child: Icon(Icons.image),
-            ),
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            '/livro',
+            arguments: {
+              'id': id,
+            },
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          shadowColor: Colors.transparent,
+          padding: EdgeInsets.zero,
+          elevation: 0,
+        ),
+        child: link != null
+            ? Image.network(
+                link!,
+              )
+            : const Center(
+                child: Icon(Icons.image),
+              ),
+      ),
     );
   }
 }

@@ -12,10 +12,10 @@ class PersonalInfo extends StatefulWidget {
   const PersonalInfo({Key? key}) : super(key: key);
 
   @override
-  _PersonalInfoState createState() => _PersonalInfoState();
+  PersonalInfoState createState() => PersonalInfoState();
 }
 
-class _PersonalInfoState extends State<PersonalInfo> {
+class PersonalInfoState extends State<PersonalInfo> {
   File? _image;
   @override
   void initState() {
