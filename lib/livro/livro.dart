@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:bookbox/livro/descricao_livro.dart';
 import 'package:flutter/material.dart';
 import 'package:bookbox/livro/livro_mostrar.dart';
 import 'package:bookbox/livro/botoes_livro.dart';
@@ -27,16 +28,11 @@ class Livro extends StatelessWidget {
           const SizedBox(height: 10),
           const BotoesLivro(),
           const SizedBox(height: 10),
+          const Divider(color: Color.fromARGB(255, 167, 167, 167)),
+          DescricaoLivro(livroID: bookId),
           const Column(
             children: [
-              Divider(color: Color.fromARGB(255, 167, 167, 167)),
-              Text(
-                'Aqui vem a descrição do livro.',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 167, 167, 167),
-                ),
-              ),
+              
               SizedBox(height: 20),
               Divider(color: Color.fromARGB(255, 167, 167, 167)),
               LidoPor('Lido Por:'),
