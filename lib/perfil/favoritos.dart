@@ -77,7 +77,7 @@ class _FavoritosState extends State<Favoritos> {
   }
 
   Future<String?> getBookLink(String id) async {
-    final book = await BookService().getBookById(id);
+    final book = await BookService.getBookById(id);
     return book?.volumeInfo.imageLinks.thumbnail;
   }
 }
@@ -89,7 +89,7 @@ class BookContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 61,
       height: 94,
       child: link != null

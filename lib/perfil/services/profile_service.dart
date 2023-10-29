@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfileService {
   static const String _profileDoc = 'Profile';
+  static const String _mostLiked = 'MostLiked';
 
   final String _uid = FirebaseAuth.instance.currentUser!.uid;
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -35,6 +36,15 @@ class ProfileService {
     } catch (e) {
       return ['Error: $e'];
     }
+  }
+
+  Future<void> fetchLike({required String liked}) async {
+    final like = await _db.collection(_uid).doc(_mostLiked).get();
+    final List<String> likeList = List<String>.from(like.get('Liked'));
+    likeList.add(liked);
+    await _db.collection(_uid).doc(_mostLiked).set({
+      'Liked': likeList
+    });
   }
 
 }

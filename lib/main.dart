@@ -19,8 +19,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform, 
   );
-
-  AuthService().signOut();
   runApp(const MyApp());
 }
 
