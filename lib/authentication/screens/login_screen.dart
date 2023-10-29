@@ -1,6 +1,12 @@
+import 'dart:io';
+
+import 'package:bookbox/common/camera_dialog.dart';
+import 'package:bookbox/common/data/shared_paths.dart';
+import 'package:bookbox/common/data/user_types.dart';
 import 'package:bookbox/common/gradient.dart';
 import 'package:bookbox/perfil/services/profile_service.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../service/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -22,6 +28,23 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isLogin = true;
   AuthService authService = AuthService();
   final _formKey = GlobalKey<FormState>();
+  UserTypes? _userType = UserTypes.reader;
+  File? _image;
+
+  @override
+  void initState() {
+    super.initState();
+
+    SharedPreferences.getInstance().then((prefs) {
+      String? image = prefs.getString(SharedPaths.createAccountImage);
+
+      if (image != null && image.isNotEmpty) {
+        setState(() {
+          _image = File(image);
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,17 +89,40 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 16.0),
                     Visibility(
                       visible: !isLogin,
-                      child: Container(
-                        height: 140,
-                        width: 140,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.white70),
-                        child: const Center(
-                            child: Icon(
-                          Icons.create,
-                          color: Colors.white,
-                          size: 35,
-                        )),
+                      child: InkWell(
+                        onTap: () async {
+                          showCameraDialog(context).then((img) {
+                            setState(() {
+                              _image = img;
+                            });
+                          });
+                        },
+                        child: Container(
+                          height: 140,
+                          width: 140,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white70,
+                          ),
+                          alignment: Alignment.center,
+                          child: (_image == null)
+                              ? const Center(
+                                  child: Icon(
+                                    Icons.create,
+                                    color: Colors.white,
+                                    size: 35,
+                                  ),
+                                )
+                              : ClipRRect(
+                                  borderRadius: BorderRadius.circular(70),
+                                  child: Image.file(
+                                    _image!,
+                                    fit: BoxFit.cover,
+                                    width: 140,
+                                    height: 140,
+                                  ),
+                                ),
+                        ),
                       ),
                     ),
                     Visibility(
@@ -286,7 +332,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboardType: TextInputType.multiline,
                         minLines: 4,
                         maxLines: null,
-                        maxLength: 120,
+                        maxLength: 160,
                         textAlignVertical: TextAlignVertical.top,
                         textAlign: TextAlign.left,
                         decoration: const InputDecoration(
@@ -309,6 +355,50 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    Visibility(
+                      visible: !isLogin,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Radio<UserTypes>(
+                                  value: UserTypes.reader,
+                                  groupValue: _userType,
+                                  onChanged: (UserTypes? value) {
+                                    setState(() {
+                                      _userType = value;
+                                    });
+                                  },
+                                ),
+                                const SizedBox(width: 4.0),
+                                const Text('Reader')
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Radio<UserTypes>(
+                                  value: UserTypes.writer,
+                                  groupValue: _userType,
+                                  onChanged: (UserTypes? value) {
+                                    setState(() {
+                                      _userType = value;
+                                    });
+                                  },
+                                ),
+                                const SizedBox(width: 4.0),
+                                const Text('Writer')
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(height: 16.0),
