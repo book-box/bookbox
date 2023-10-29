@@ -6,14 +6,16 @@ import 'package:http/http.dart' as http;
 import '../models/book.dart';
 
 enum OrderBy { relevance, newest }
+
 enum PrintType { all, books, magazines }
+
 enum Filter { partial, full, freeEbooks, paidEbooks, ebooks }
 
 class BookService {
   static const String _apiKey = 'AIzaSyBfyRr1QIB9RPOg9xXOXI230LY54KBspDs';
   static const String _baseUrl = 'https://www.googleapis.com/books/v1/volumes';
 
-  Future<List<Book>> searchBooks({
+  static Future<List<Book>> searchBooks({
     required String query,
     int numberOfElements = 20,
     OrderBy orderBy = OrderBy.relevance,
@@ -22,7 +24,7 @@ class BookService {
   }) async {
     if (numberOfElements > 40) {
       throw Exception('The maximum number of elements is 40');
-    } else if(query.contains(' ')) {
+    } else if (query.contains(' ')) {
       query = query.replaceAll(' ', '+');
     }
 
@@ -50,7 +52,7 @@ class BookService {
     return books;
   }
 
-  Future<Book?> getBookById(String id) async {
+  static Future<Book?> getBookById(String id) async {
     final url = Uri.parse('$_baseUrl/$id?key=$_apiKey');
     http.Response res = await http.get(url);
 
@@ -63,5 +65,4 @@ class BookService {
     dynamic book = json.decode(res.body);
     return Book.fromMap(book);
   }
-
 }

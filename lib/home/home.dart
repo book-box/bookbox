@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
 
+import 'package:bookbox/livro/models/book.dart';
+import 'package:bookbox/livro/services/books_service.dart';
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Column(
-        children: [
-          SectionWithCards(
-            sectionTitle: 'Lançamentos',
-            cardCount: 5,
-          ),
-          SectionWithCards(
-            sectionTitle: 'Em alta',
-            cardCount: 5,
-          ),
-          SectionWithCards(
-            sectionTitle: 'Seus amigos estão lendo',
-            cardCount: 5,
-          ),
-          SectionWithCards(
-            sectionTitle: 'Autores em alta',
-            cardCount: 5,
-          ),
-        ],
+    return const Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SectionWithCards(
+              sectionTitle: 'Lançamentos',
+              query: 'flowers',
+            ),
+            SectionWithCards(
+              sectionTitle: 'Em alta',
+              query: 'Thunder',
+            ),
+            SectionWithCards(
+              sectionTitle: 'Seus amigos estão lendo',
+              query: 'Good',
+            ),
+            SectionWithCards(
+              sectionTitle: 'Autores em alta',
+              query: 'Live',
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -32,10 +37,13 @@ class Home extends StatelessWidget {
 
 class SectionWithCards extends StatelessWidget {
   final String sectionTitle;
-  final int cardCount;
+  final String query;
 
-  const SectionWithCards(
-      {required this.sectionTitle, required this.cardCount, super.key});
+  const SectionWithCards({
+    Key? key,
+    required this.sectionTitle,
+    required this.query,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,45 +51,46 @@ class SectionWithCards extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16),
           child: Text(
             sectionTitle,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 92, 103, 112),
-            ),
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: List.generate(
-              cardCount,
-              (index) => Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.pushNamed(context, '/livro');
-                  },
-                  child: Card(
-                    color: Colors.white,
-                    child: SizedBox(
-                      width: 100,
-                      height: 160,
-                      child: Center(
-                        child: Text('Card $index'),
+        SizedBox(
+          height: 200,
+          width: MediaQuery.of(context).size.width,
+          child: FutureBuilder<List<Book>>(
+            future: BookService.searchBooks(query: query),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final books = snapshot.data!;
+                return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: books.length,
+                  itemBuilder: (context, index) {
+                    final book = books[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Image.network(
+                        book.volumeInfo.imageLinks.thumbnail ?? '',
+                        width: 120,
+                        height: 160,
+                        fit: BoxFit.cover,
                       ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                    );
+                  },
+                );
+              } else if (snapshot.hasError) {
+                return const Center(
+                    child: Text('Erro ao carregar lançamentos'));
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
           ),
         ),
       ],
     );
   }
 }
-
-
