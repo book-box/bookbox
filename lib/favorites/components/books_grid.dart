@@ -32,7 +32,10 @@ class _BooksGridState extends State<BooksGrid> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(widget.title!,
-                        style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
                   ),
                 )
               : const SliverToBoxAdapter(),
@@ -46,14 +49,16 @@ class _BooksGridState extends State<BooksGrid> {
             delegate: SliverChildBuilderDelegate(
               (context, index) {
                 return _SliverGridCard(
-                    link: books[index].volumeInfo.imageLinks.thumbnail,
+                  link: books[index].volumeInfo.imageLinks.thumbnail,
                 );
               },
               childCount: books.length,
             ),
           ),
           const SliverToBoxAdapter(
-            child: SizedBox(height: 32.0,),
+            child: SizedBox(
+              height: 32.0,
+            ),
           ),
         ],
       ),
@@ -61,8 +66,8 @@ class _BooksGridState extends State<BooksGrid> {
   }
 
   Future<void> refresh() async {
-    List<Book> list = await BookService()
-        .searchBooks(query: 'O sol é para todos', numberOfElements: 40);
+    List<Book> list = await BookService.searchBooks(
+        query: 'Harry Potter', numberOfElements: 40);
 
     setState(() {
       books = list;
@@ -78,21 +83,21 @@ class _SliverGridCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: Colors.grey,
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: link != null
-                ? Image.network(
-                    link!,
-                    fit: BoxFit.cover,
-                  )
-                : const Center(
-                    child: Icon(Icons.image),
-                  ),
-          ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        color: Colors.grey,
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5),
+        child: link != null
+            ? Image.network(
+                link!,
+                fit: BoxFit.cover,
+              )
+            : const Center(
+                child: Icon(Icons.image),
+              ),
+      ),
     );
   }
 }
