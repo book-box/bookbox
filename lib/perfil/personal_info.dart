@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bookbox/perfil/seguidores.dart';
 
+import 'package:bookbox/perfil/services/profile_service.dart';
+
 class PersonalInfo extends StatelessWidget {
   const PersonalInfo({Key? key}) : super(key: key);
 
@@ -11,7 +13,8 @@ class PersonalInfo extends StatelessWidget {
         Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0.4),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 0.4),
               child: CircleAvatar(
                 radius: 50,
                 backgroundColor: Colors.brown.shade800,
@@ -22,17 +25,33 @@ class PersonalInfo extends StatelessWidget {
           ],
         ),
         const SizedBox(width: 20),
-        const Align(
-          alignment: Alignment.topCenter,
-          child: Text.rich(
-            TextSpan(text: 'lorem ipsum dolor sit amet'),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 10,
-            ),
-          ),
+        FutureBuilder<Widget>(
+          future: buildProfileWidget(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return snapshot.data!;
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              return const CircularProgressIndicator();
+            }
+          },
         ),
       ],
+    );
+  }
+
+  Future<Widget> buildProfileWidget() async {
+    final bio = await ProfileService().getUserBio();
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Text.rich(
+        TextSpan(text: bio),
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 10,
+        ),
+      ),
     );
   }
 }

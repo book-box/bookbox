@@ -12,4 +12,29 @@ class ProfileService {
       'Bio': bio
     });
   }
+
+  Future<String> getUserBio() async {
+    try {
+      final doc = await _db.collection(_uid).doc(_profileDoc).get();
+      return doc.get('Bio');
+    } catch (e) {
+      return 'Error: $e';
+    }
+  }
+
+  Future<void> updateFavoriteBooks({required List<String> favoriteBooks}) async {
+    await _db.collection(_uid).doc(_profileDoc).set({
+      'FavoriteBooks': favoriteBooks
+    });
+  }
+
+  Future<List<String>> getFavoriteBooks() async {
+    try {
+      final doc = await _db.collection(_uid).doc(_profileDoc).get();
+      return List<String>.from(doc.get('FavoriteBooks'));
+    } catch (e) {
+      return ['Error: $e'];
+    }
+  }
+
 }

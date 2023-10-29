@@ -62,7 +62,7 @@ class _BooksGridState extends State<BooksGrid> {
 
   Future<void> refresh() async {
     List<Book> list = await BookService()
-        .searchBooks(query: 'Harry Potter', numberOfElements: 40);
+        .searchBooks(query: 'O sol é para todos', numberOfElements: 40);
 
     setState(() {
       books = list;
