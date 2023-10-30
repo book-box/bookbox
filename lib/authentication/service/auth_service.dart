@@ -85,4 +85,50 @@ class AuthService {
 
     return null;
   }
+
+  Future<String?> updateName({required String name}) async {
+    try {
+      await _auth.currentUser!.updateDisplayName(name);
+    } on FirebaseAuthException catch (e) {
+      return e.code;
+    }
+
+    return null;
+  }
+
+  Future<String?> updateEmail({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: _auth.currentUser!.email!,
+        password: password,
+      );
+
+      await _auth.currentUser!.updateEmail(email);
+    } on FirebaseAuthException catch (e) {
+      return e.code;
+    }
+
+    return null;
+  }
+
+  Future<String?> updatePassword({
+    required String password,
+    required String newPassword,
+  }) async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: _auth.currentUser!.email!,
+        password: password,
+      );
+
+      await _auth.currentUser!.updatePassword(newPassword);
+    } on FirebaseAuthException catch (e) {
+      return e.code;
+    }
+
+    return null;
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:bookbox/perfil/favoritos.dart';
+import 'package:bookbox/perfil/update_profile.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bookbox/perfil/lista.dart';
@@ -16,16 +17,7 @@ class Perfil extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topRight,
-            child: Padding(
-              padding: EdgeInsets.only(top: 35),
-              child: IconButton(
-                onPressed: null,
-                icon: Icon(
-                  Icons.create,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            child: UpdateProfile(),
           ),
           PersonalInfo(),
           SizedBox(height: 5),
