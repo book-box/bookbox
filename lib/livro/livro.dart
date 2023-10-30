@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bookbox/livro/descricao_livro.dart';
 import 'package:flutter/material.dart';
 import 'package:bookbox/livro/livro_mostrar.dart';

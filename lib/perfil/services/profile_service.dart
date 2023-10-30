@@ -5,6 +5,7 @@ class ProfileService {
   static const String _profileDoc = 'Profile';
   static const String _mostLiked = 'MostLiked';
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final String _uid = FirebaseAuth.instance.currentUser!.uid;
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
@@ -21,6 +22,23 @@ class ProfileService {
     } catch (e) {
       return 'Error: $e';
     }
+  }
+
+  Future<Map<String, dynamic>> getUser() async {
+    String name = '', email = '', error = '';
+
+    try {
+      name = _auth.currentUser!.displayName!;
+      email = _auth.currentUser!.email!;
+    } catch (e) {
+      error = 'Error: $e';
+    }
+
+    return {
+      'name': name,
+      'email': email,
+      'error': error
+    };
   }
 
   Future<void> updateFavoriteBooks({required List<String> favoriteBooks}) async {
@@ -46,5 +64,4 @@ class ProfileService {
       'Liked': likeList
     });
   }
-
 }
