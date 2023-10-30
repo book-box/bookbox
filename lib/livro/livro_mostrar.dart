@@ -29,6 +29,7 @@ class _LivroMostrarState extends State<LivroMostrar> {
   String? _bookLink;
   List<String>? _bookAutor;
   String? _bookData;
+  String? _bookName;
 
   @override
   void initState() {
@@ -62,6 +63,13 @@ class _LivroMostrarState extends State<LivroMostrar> {
       });
     }
 
+    final bookName = await widget.buildLivroMostrarWidget();
+    if (bookName != null) {
+      final name = await getBookName(bookName.id);
+      setState(() {
+        _bookName = name;
+      });
+    }
   }
 
   @override
@@ -73,6 +81,7 @@ class _LivroMostrarState extends State<LivroMostrar> {
 
     return Column(
       children: [
+        const SizedBox(height: 10),
         GestureDetector(
           onTap: null,
           child: _bookLink != null
@@ -82,7 +91,21 @@ class _LivroMostrarState extends State<LivroMostrar> {
                 )
               : const CircularProgressIndicator(),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 1.0),
+          child: Text(
+            _bookName?.toUpperCase() ?? '',
+            style: const TextStyle(
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -98,7 +121,7 @@ class _LivroMostrarState extends State<LivroMostrar> {
               bookAutorString,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                fontSize: 17,
+                fontSize: 15,
                 color: Color.fromARGB(255, 204, 204, 204),
               ),
             ),
@@ -121,5 +144,10 @@ class _LivroMostrarState extends State<LivroMostrar> {
   Future<String?> getBookData(String id) async {
     final book = await BookService.getBookById(id);
     return book?.volumeInfo.publishedDate?.year.toString();
+  }
+
+  Future<String?> getBookName(String id) async {
+    final book = await BookService.getBookById(id);
+    return book?.volumeInfo.title;
   }
 }
