@@ -77,13 +77,18 @@ class PersonalInfoState extends State<PersonalInfo> {
 
   Future<Widget> buildProfileWidget() async {
     final bio = await ProfileService().getUserBio();
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Text.rich(
-        TextSpan(text: bio),
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 10,
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: Text(
+          bio,
+          style: const TextStyle(
+            color: Color.fromARGB(255, 204, 204, 204),
+            fontSize: 10,
+          ),
+          maxLines: 5,
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );

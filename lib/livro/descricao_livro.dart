@@ -5,6 +5,8 @@ import 'package:bookbox/livro/models/book.dart';
 import 'package:bookbox/livro/services/books_service.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_html/flutter_html.dart';
+
 class DescricaoLivro extends StatefulWidget {
   final String? livroID;
   const DescricaoLivro({this.livroID, Key? key}) : super(key: key);
@@ -50,12 +52,17 @@ class _DescricaoLivroState extends State<DescricaoLivro> {
   Widget build(BuildContext context) {
     return Container(
       child: _bookDesciption != null
-          ? Text(
-              _bookDesciption!,
-              style: const TextStyle(
-                fontSize: 15,
-                color: Color.fromARGB(255, 204, 204, 204)
-              ),
+          ? Html(
+              data: _bookDesciption!,
+              style: {
+                "html": Style(
+                  fontSize: FontSize(14),
+                  textAlign: TextAlign.justify,
+                  color: const Color.fromARGB(255, 204, 204, 204),
+                  textDecoration: null,
+                  
+                ),
+              },
             )
           : const CircularProgressIndicator(),
     );

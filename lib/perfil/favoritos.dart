@@ -56,7 +56,7 @@ class _FavoritosState extends State<Favoritos> {
               'Favoritos',
               style: TextStyle(
                 fontSize: 15,
-                color: Colors.white,
+                color: Color.fromARGB(255, 204, 204, 204),
               ),
             ),
           ),
