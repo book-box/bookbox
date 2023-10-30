@@ -1,4 +1,3 @@
-import 'package:bookbox/authentication/service/auth_service.dart';
 import 'package:bookbox/favorites/screens/favorites_screen.dart';
 import 'package:flutter/material.dart';
 
