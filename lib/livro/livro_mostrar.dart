@@ -27,15 +27,17 @@ class LivroMostrar extends StatefulWidget {
 
 class _LivroMostrarState extends State<LivroMostrar> {
   String? _bookLink;
+  List<String>? _bookAutor;
+  String? _bookData;
 
   @override
   void initState() {
     super.initState();
-    _loadBookLink();
+    _loadBook();
     
   }
 
-  Future<void> _loadBookLink() async {
+  Future<void> _loadBook() async {
     final book = await widget.buildLivroMostrarWidget();
     if (book != null) {
       final link = await getBookLink(book.id);
@@ -43,24 +45,81 @@ class _LivroMostrarState extends State<LivroMostrar> {
         _bookLink = link;
       });
     }
+
+    final bookAutor = await widget.buildLivroMostrarWidget();
+    if (bookAutor != null) {
+      final autor = await getBookAutor(bookAutor.id);
+      setState(() {
+        _bookAutor = autor;
+      });
+    }
+  
+    final bookData = await widget.buildLivroMostrarWidget();
+    if (bookData != null) {
+      final data = await getBookData(bookData.id);
+      setState(() {
+        _bookData = data;
+      });
+    }
+
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: null,
-      child: _bookLink != null
-          ? Image.network(
-              _bookLink!,
-              fit: BoxFit.cover,
-            )
-          : const CircularProgressIndicator(),
+    String bookAutorString = _bookAutor?.join(', ') ?? '';
+    bookAutorString = 'Autor: $bookAutorString';
+    String bookDataString = _bookData ?? '';
+    bookDataString = 'Ano: $bookDataString';
+
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: null,
+          child: _bookLink != null
+              ? Image.network(
+                  _bookLink!,
+                  fit: BoxFit.cover,
+                )
+              : const CircularProgressIndicator(),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              bookDataString,
+              style: const TextStyle(
+                overflow: TextOverflow.ellipsis,
+                fontSize: 17,
+                color: Color.fromARGB(255, 204, 204, 204),
+              ),
+            ),
+            Text(
+              bookAutorString,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 17,
+                color: Color.fromARGB(255, 204, 204, 204),
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 
   Future<String?> getBookLink(String id) async {
     final book = await BookService.getBookById(id);
-    log("Book: $book");
     return book?.volumeInfo.imageLinks.thumbnail;
+  }
+
+  Future<List<String>> getBookAutor(String id) async {
+    final book = await BookService.getBookById(id);
+    return book!.volumeInfo.authors!;
+  }
+
+  Future<String?> getBookData(String id) async {
+    final book = await BookService.getBookById(id);
+    return book?.volumeInfo.publishedDate?.year.toString();
   }
 }

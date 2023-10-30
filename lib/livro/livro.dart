@@ -26,6 +26,7 @@ class Livro extends StatelessWidget {
           const SizedBox(height: 5),
           LivroMostrar(livroID: bookId),
           const SizedBox(height: 10),
+          const SizedBox(height: 10),
           const BotoesLivro(),
           const SizedBox(height: 10),
           const Divider(color: Color.fromARGB(255, 167, 167, 167)),

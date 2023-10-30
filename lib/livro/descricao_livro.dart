@@ -54,7 +54,7 @@ class _DescricaoLivroState extends State<DescricaoLivro> {
               _bookDesciption!,
               style: const TextStyle(
                 fontSize: 15,
-                color: Colors.white,
+                color: Color.fromARGB(255, 204, 204, 204)
               ),
             )
           : const CircularProgressIndicator(),
