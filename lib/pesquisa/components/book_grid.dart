@@ -19,6 +19,7 @@ class BookGrid extends StatelessWidget {
           delegate: SliverChildBuilderDelegate(
             (context, index) {
               return _SliverGridCard(
+                id: books[index].id,
                 link: books[index].volumeInfo.imageLinks.thumbnail,
               );
             },
@@ -37,26 +38,38 @@ class BookGrid extends StatelessWidget {
 
 class _SliverGridCard extends StatelessWidget {
   final String? link;
+  final String id;
 
-  const _SliverGridCard({this.link, Key? key}) : super(key: key);
+  const _SliverGridCard({required this.id, this.link, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: Colors.grey,
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(5),
-        child: link != null
-            ? Image.network(
-                link!,
-                fit: BoxFit.cover,
-              )
-            : const Center(
-                child: Icon(Icons.image),
-              ),
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/livro',
+          arguments: {
+            'id': id,
+          },
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: Colors.grey,
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(5),
+          child: link != null
+              ? Image.network(
+                  link!,
+                  fit: BoxFit.cover,
+                )
+              : const Center(
+                  child: Icon(Icons.image),
+                ),
+        ),
       ),
     );
   }
