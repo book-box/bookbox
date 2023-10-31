@@ -14,31 +14,32 @@ class Livro extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return  SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const TopBarEstante(),
-          const Estrela('4.5'),
-          const SizedBox(height: 5),
-          LivroMostrar(livroID: bookId),
-          const SizedBox(height: 20),
-          const BotoesLivro(),
-          const SizedBox(height: 10),
-          const Divider(color: Color.fromARGB(255, 167, 167, 167)),
-          DescricaoLivro(livroID: bookId),
-          const Column(
-            children: [
-              
-              SizedBox(height: 20),
-              Divider(color: Color.fromARGB(255, 167, 167, 167)),
-              LidoPor('Lido Por:'),
-              SizedBox(height: 15),
-              Lista('Relacionados:'),
-            ],
-          ),
-        ],
+    return  Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const TopBarEstante(),
+            const Estrela('4.5'),
+            const SizedBox(height: 5),
+            LivroMostrar(livroID: bookId),
+            const SizedBox(height: 20),
+            const BotoesLivro(),
+            const SizedBox(height: 10),
+            const Divider(color: Color.fromARGB(255, 167, 167, 167)),
+            DescricaoLivro(livroID: bookId),
+            Column(
+              children: [
+                const SizedBox(height: 20),
+                const Divider(color: Color.fromARGB(255, 167, 167, 167)),
+                const LidoPor('Lido Por:'),
+                const SizedBox(height: 15),
+                Lista(titulo: 'Relaciondos:', livroID: bookId),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
