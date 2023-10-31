@@ -8,7 +8,9 @@ import 'package:bookbox/livro/models/book.dart';
 import 'package:bookbox/perfil/services/profile_service.dart';
 
 class Favoritos extends StatefulWidget {
-  const Favoritos({Key? key}) : super(key: key);
+  final String text;
+
+  const Favoritos(this.text, {Key? key}) : super(key: key);
 
   @override
   State<Favoritos> createState() => _FavoritosState();
@@ -53,13 +55,13 @@ class _FavoritosState extends State<Favoritos> {
     log('Favoritos $favoritosList');
     return Column(
       children: [
-        const Align(
+        Align(
           alignment: Alignment.topLeft,
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Favoritos',
-              style: TextStyle(
+              widget.text,
+              style: const TextStyle(
                 fontSize: 15,
                 color: Color.fromARGB(255, 204, 204, 204),
               ),
