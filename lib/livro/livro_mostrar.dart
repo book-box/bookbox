@@ -51,25 +51,31 @@ class _LivroMostrarState extends State<LivroMostrar> {
     final bookAutor = await widget.buildLivroMostrarWidget();
     if (bookAutor != null) {
       final autor = await getBookAutor(bookAutor.id);
-      setState(() {
-        _bookAutor = autor;
-      });
+      if (mounted) {
+        setState(() {
+          _bookAutor = autor;
+        });
+      }
     }
-  
+
     final bookData = await widget.buildLivroMostrarWidget();
     if (bookData != null) {
       final data = await getBookData(bookData.id);
-      setState(() {
-        _bookData = data;
-      });
+      if (mounted) {
+        setState(() {
+          _bookData = data;
+        });
+      }
     }
 
     final bookName = await widget.buildLivroMostrarWidget();
     if (bookName != null) {
       final name = await getBookName(bookName.id);
-      setState(() {
-        _bookName = name;
-      });
+      if (mounted) {
+        setState(() {
+          _bookName = name;
+        });
+      }
     }
   }
 
