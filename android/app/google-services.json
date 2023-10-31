@@ -1,223 +1,26 @@
 {
   "project_info": {
-    "project_number": "178356227708",
-    "project_id": "flutter-firebase-e042a",
-    "storage_bucket": "flutter-firebase-e042a.appspot.com"
+    "project_number": "553575107355",
+    "project_id": "bookbox-2d0f7",
+    "storage_bucket": "bookbox-2d0f7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:178356227708:android:d7bf0e2cfa9ec1445bc3f9",
-        "android_client_info": {
-          "package_name": "br.com.alura.flutter_firebase_authentication"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCee468suIiZL0C-ArWnSnDsMdyQeGdI1o"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "178356227708-0sm4s00lv2uaedb0o18on7lr8ah65sha.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.bookbox"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:178356227708:android:68bdc9a9df0291155bc3f9",
+        "mobilesdk_app_id": "1:553575107355:android:f748f738fe958a76d261be",
         "android_client_info": {
           "package_name": "com.example.bookbox"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCee468suIiZL0C-ArWnSnDsMdyQeGdI1o"
+          "current_key": "AIzaSyDoF2tuK0cZMQb9ecmBkhPVVdUe_biateE"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "178356227708-0sm4s00lv2uaedb0o18on7lr8ah65sha.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.bookbox"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:178356227708:android:b64c6b0566ef60d05bc3f9",
-        "android_client_info": {
-          "package_name": "com.example.firebase"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCee468suIiZL0C-ArWnSnDsMdyQeGdI1o"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "178356227708-0sm4s00lv2uaedb0o18on7lr8ah65sha.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.bookbox"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:178356227708:android:a3a7e905de96e13a5bc3f9",
-        "android_client_info": {
-          "package_name": "com.example.firebase_2"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCee468suIiZL0C-ArWnSnDsMdyQeGdI1o"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "178356227708-0sm4s00lv2uaedb0o18on7lr8ah65sha.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.bookbox"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:178356227708:android:0abd152d3cacf2175bc3f9",
-        "android_client_info": {
-          "package_name": "com.example.my_notebook"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCee468suIiZL0C-ArWnSnDsMdyQeGdI1o"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "178356227708-0sm4s00lv2uaedb0o18on7lr8ah65sha.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.bookbox"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:178356227708:android:c14658b63672dcd75bc3f9",
-        "android_client_info": {
-          "package_name": "com.example.my_notebook_dev"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCee468suIiZL0C-ArWnSnDsMdyQeGdI1o"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "178356227708-o7nod7a3lqi792noqvbiq46m33jucm8p.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "178356227708-0sm4s00lv2uaedb0o18on7lr8ah65sha.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.bookbox"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
