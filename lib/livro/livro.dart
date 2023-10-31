@@ -20,11 +20,11 @@ class Livro extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const TopBarEstante(),
-          const Estrela('4.5'),
+          const Estrela(),
           const SizedBox(height: 5),
           LivroMostrar(livroID: bookId),
           const SizedBox(height: 20),
-          const BotoesLivro(),
+          BotoesLivro(idLivro: bookId),
           const SizedBox(height: 10),
           const Divider(color: Color.fromARGB(255, 167, 167, 167)),
           DescricaoLivro(livroID: bookId),

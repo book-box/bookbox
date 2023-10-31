@@ -99,7 +99,7 @@ class BookContainer extends StatelessWidget {
             '/livro',
             arguments: {
               'id': id,
-            },
+            },            
           );
         },
         style: ElevatedButton.styleFrom(

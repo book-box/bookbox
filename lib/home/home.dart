@@ -13,20 +13,20 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             SectionWithCards(
-              sectionTitle: 'Lançamentos',
-              query: 'flowers',
+              sectionTitle: 'POPULARES',
+              query: 'dog',
             ),
             SectionWithCards(
-              sectionTitle: 'Em alta',
-              query: 'Thunder',
+              sectionTitle: 'CONHEÇA MAIS',
+              query: 'cat',
             ),
             SectionWithCards(
-              sectionTitle: 'Seus amigos estão lendo',
-              query: 'Good',
+              sectionTitle: 'NOVOS AUTORES',
+              query: 'bird',
             ),
             SectionWithCards(
-              sectionTitle: 'Autores em alta',
-              query: 'Live',
+              sectionTitle: 'SEUS AMIGOS ESTÃO LENDO',
+              query: 'fox',
             ),
           ],
         ),
@@ -54,7 +54,10 @@ class SectionWithCards extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Text(
             sectionTitle,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: const TextStyle(
+              fontSize: 15,
+              color: Color.fromARGB(255, 204, 204, 204),
+            )
           ),
         ),
         SizedBox(

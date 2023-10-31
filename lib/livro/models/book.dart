@@ -14,6 +14,7 @@ class Book {
     this.selfLink, 
     required this.volumeInfo,
   });
+  
 
   Book.fromMap(Map<String, dynamic> book)
     : kind = book['kind'],

@@ -1,7 +1,27 @@
-import 'package:flutter/material.dart';
 
-class BotoesLivro extends StatelessWidget {
-  const BotoesLivro({Key? key}) : super(key: key);
+import 'dart:developer';
+
+import 'package:bookbox/livro/data.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:bookbox/db/service/database_helper.dart';
+import 'package:bookbox/livro/models/book.dart';
+import 'package:bookbox/livro/services/books_service.dart';
+
+class BotoesLivro extends StatefulWidget {
+  final String? idLivro;
+
+  const BotoesLivro({this.idLivro, Key? key}) : super(key: key);
+
+  @override
+  State<BotoesLivro> createState() => _BotoesLivroState();
+}
+
+class _BotoesLivroState extends State<BotoesLivro> {
+  final TextEditingController _controller = TextEditingController();
+
+  final dbHelper = DatabaseHelper.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +38,8 @@ class BotoesLivro extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 icon: const Icon(
                   Icons.browse_gallery_outlined,
-                color: Color.fromARGB(255, 225, 225, 225),
-                size: 55,
-
+                  color: Color.fromARGB(255, 225, 225, 225),
+                  size: 55,
                 ),
                 onPressed: () {},
               ),
@@ -75,7 +94,43 @@ class BotoesLivro extends StatelessWidget {
                   size: 55,
                 ),
                 onPressed: () {
-                  
+                  showModalBottomSheet(
+                    context: context,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                    ),
+                    builder: (BuildContext context) {
+                      return SizedBox(
+                        height: 300,
+                        child: Container(
+                          color: const Color.fromARGB(255, 57, 56, 56),
+                          child: Column(
+                            children: [
+                              TextField(
+                                decoration: const InputDecoration(
+                                    labelText: "Adicionar nota"),
+                                keyboardType: TextInputType.number,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly
+                                ],
+                                controller: _controller,
+                              ),
+                              ElevatedButton(
+                                child: const Text('Submit'),
+                                onPressed: () {
+                                  final String nota = _controller.text;
+                                  notaNotifier.value = nota;
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
                 },
               ),
             ),
@@ -93,5 +148,10 @@ class BotoesLivro extends StatelessWidget {
         const SizedBox(width: 20),
       ],
     );
+  }
+
+  Future<Book?> getBook(String id) async {
+    final book = await BookService.getBookById(id);
+    return book;
   }
 }

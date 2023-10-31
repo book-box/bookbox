@@ -22,6 +22,7 @@ dependencies:
   shared_preferences: ^2.2.2
   flutter_html: ^3.0.0-beta.2
   sqflite: ^2.3.0
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +39,9 @@ flutter:
   - assets/images/Logo.png
   - assets/images/Head.png
   - assets/images/PerfilBase.png
+  - assets/images/heart.png
+  - assets/images/heart_border.png
+  - assets/images/heart_half.png
   
 flutter_icons:
   image_path: "icon/icon.png" 
