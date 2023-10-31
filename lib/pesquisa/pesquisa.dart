@@ -17,7 +17,7 @@ class _PesquisaState extends State<Pesquisa> {
   void initState() {
     super.initState();
 
-    BookService.searchBooks(query: 'Cat').then((value) {
+    BookService.searchBooks(query: 'dog').then((value) {
       setState(() {
         books = value;
       });

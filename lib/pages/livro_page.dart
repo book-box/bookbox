@@ -19,7 +19,6 @@ class _LivroPageState extends State<LivroPage> {
   Widget build(BuildContext context) {
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
     final String? bookId = arg['id'];
-    log("slaa : $bookId");
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 15, 15, 15),
       bottomNavigationBar: const Navbar(),

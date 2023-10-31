@@ -62,7 +62,7 @@ class _UpdateProfile extends State<UpdateProfile> {
               ListTile(
                 leading: const Icon(Icons.logout),
                 title: const Text('Sing Out',
-                    style: TextStyle(color: Colors.brown)),
+                    style: TextStyle(color: Colors.white)),
                 onTap: () {
                   AuthService().signOut();
                   Navigator.pushReplacementNamed(context, '/');

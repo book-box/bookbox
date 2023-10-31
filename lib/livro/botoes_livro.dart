@@ -74,7 +74,9 @@ class BotoesLivro extends StatelessWidget {
                   color: Color.fromARGB(255, 225, 225, 225),
                   size: 55,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  
+                },
               ),
             ),
             const SizedBox(height: 2),

@@ -37,6 +37,7 @@ flutter:
   - assets/images/Plus.png
   - assets/images/Logo.png
   - assets/images/Head.png
+  - assets/images/PerfilBase.png
   
 flutter_icons:
   image_path: "icon/icon.png" 
