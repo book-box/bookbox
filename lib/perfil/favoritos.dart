@@ -41,6 +41,11 @@ class _FavoritosState extends State<Favoritos> {
   Future<Widget> buildFavoritosWidget() async {
     final favoritosList = await ProfileService().getFavoriteBooks();
     final List<String?> link = [];
+
+    if(favoritosList[0].contains('Error')) {
+      return const Text('Você ainda não tem favoritos...');
+    }
+
     for (var book in favoritosList) {
       link.add(await getBookLink(book));
     }

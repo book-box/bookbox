@@ -1,3 +1,4 @@
+import 'package:bookbox/common/book_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bookbox/livro/models/book.dart';
@@ -75,12 +76,7 @@ class SectionWithCards extends StatelessWidget {
                     final book = books[index];
                     return Padding(
                       padding: const EdgeInsets.all(8),
-                      child: Image.network(
-                        book.volumeInfo.imageLinks.thumbnail ?? '',
-                        width: 120,
-                        height: 160,
-                        fit: BoxFit.cover,
-                      ),
+                      child: SizedBox(width: 120, height: 160, child: BookCard(id: book.id, link: book.volumeInfo.imageLinks.thumbnail,)),
                     );
                   },
                 );
