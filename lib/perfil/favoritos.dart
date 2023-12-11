@@ -34,7 +34,12 @@ class _FavoritosState extends State<Favoritos> {
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
-          return const CircularProgressIndicator();
+          return const SizedBox(
+            height: 120,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         }
       },
     );
@@ -44,8 +49,13 @@ class _FavoritosState extends State<Favoritos> {
     final favoritosList = await ProfileService().getFavoriteBooks();
     final List<String?> link = [];
 
-    if(favoritosList[0].contains('Error')) {
-      return const Text('Você ainda não tem favoritos...');
+    if (favoritosList[0].contains('Error')) {
+      return const SizedBox(
+        height: 120,
+        child: Center(
+          child: Text('Você ainda não tem favoritos...'),
+        ),
+      );
     }
 
     for (var book in favoritosList) {
@@ -106,7 +116,7 @@ class BookContainer extends StatelessWidget {
             '/livro',
             arguments: {
               'id': id,
-            },            
+            },
           );
         },
         style: ElevatedButton.styleFrom(

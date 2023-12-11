@@ -16,8 +16,11 @@ class _PesquisaState extends State<Pesquisa> {
   @override
   void initState() {
     super.initState();
+    _searchBooks('dog');
+  }
 
-    BookService.searchBooks(query: 'dog').then((value) {
+  void _searchBooks(String query) {
+    BookService.searchBooks(query: query).then((value) {
       setState(() {
         books = value;
       });
@@ -27,32 +30,56 @@ class _PesquisaState extends State<Pesquisa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Search'),
-      ),
+      appBar: _buildAppBar(),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              onSubmitted: (query) {
-                BookService.searchBooks(query: query).then((value) {
-                  setState(() {
-                    books = value;
-                  });
-                });
-              },
-              decoration: const InputDecoration(
-                labelText: 'Search',
-                hintText: 'Search for books...',
-                prefixIcon: Icon(Icons.search),
-              ),
-            ),
-          ),
+          _buildSearchField(),
+          Container(height: 10.0, color: Colors.black),
+          const SizedBox(height: 10.0),
           Expanded(
             child: BookGrid(books: books),
           ),
         ],
+      ),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: const Text("Pesquisa"),
+      centerTitle: true,
+      backgroundColor: Colors.black,
+    );
+  }
+
+  Widget _buildSearchField() {
+    return Container(
+      color: Colors.black,
+      child: SizedBox(
+        height: 60.0,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: TextField(
+            onSubmitted: _searchBooks,
+            decoration: const InputDecoration(
+              labelText: 'Pesquisar',
+              prefixIcon: Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+              ),
+              focusColor: Colors.white,
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderSide: BorderSide(
+                  color: Color(0xff65d0e0),
+                  width: 1.0,
+                ),
+              ),
+              filled: true,
+              fillColor: Color(0xD9D9D9FF),
+            ),
+          ),
+        ),
       ),
     );
   }
