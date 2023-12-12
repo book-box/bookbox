@@ -3,6 +3,8 @@ import 'package:bookbox/livro/services/books_service.dart';
 import 'package:bookbox/pesquisa/components/book_grid.dart';
 import 'package:flutter/material.dart';
 
+import 'dart:developer';
+
 class Pesquisa extends StatefulWidget {
   const Pesquisa({Key? key}) : super(key: key);
 
@@ -23,6 +25,7 @@ class _PesquisaState extends State<Pesquisa> {
     BookService.searchBooks(query: query).then((value) {
       setState(() {
         books = value;
+        log("livros$books");
       });
     });
   }

@@ -8,13 +8,16 @@ class BookGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        _buildBookGrid(),
-        const SliverToBoxAdapter(
-          child: SizedBox(height: 32.0),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: CustomScrollView(
+        slivers: [
+          _buildBookGrid(),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 32.0),
+          ),
+        ],
+      ),
     );
   }
 

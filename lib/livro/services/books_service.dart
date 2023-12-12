@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-
+import 'dart:developer';
 import '../models/book.dart';
 
 
@@ -46,6 +46,8 @@ class BookService {
 
       List<Book> books = [];
       dynamic list = json.decode(res.body);
+
+      log("sla $list");
 
       for (Map<String, dynamic> item in list['items']) {
         books.add(Book.fromMap(item));
